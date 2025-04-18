@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate="~{layout}">
+<head>
+    <title layout:fragment="title">Brainy - Статистика</title>
+</head>
+
+<body>
+<section layout:fragment="content" class="statistics-content">
+    <h1>Статистика</h1>
+
+    <h2>Рейтинг популярности направлений</h2>
+
+    <table>
+        <thead>
+            <tr><th>Направление</th><th>Колличество курсов</th></tr>
+        </thead>
+        <tbody>
+            <tr th:each="entry : ${directionCounts}">
+                <td th:text="${entry.key}">Направление</td>
+                <td th:text="${entry.value}">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="stat-illustration">
+        <img th:src="@{/images/statistics.png}" alt="Статистика"/>
+    </div>
+</section>
+</body>
+</html>

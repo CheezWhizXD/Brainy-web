@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8"/>
+    <!-- layout:fragment="title": дочерние страницы могут переопределить заголовок -->
+    <title layout:fragment="title">Brainy</title>
+    <!-- Подключаем общий CSS -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+
+<body>
+<!-- Общая шапка -->
+<header layout:fragment="header">
+    <div class="nav-bar">
+        <div class="logo-block">
+            <img th:src="@{/images/logo.png}" alt="Brainy" class="logo" />
+            <!-- <span class="brand">Brainy</span> -->
+        </div>
+        <nav>
+            <a th:href="@{/}">Главная</a>
+            <a th:href="@{/courses}">Курсы</a>
+            <a th:href="@{/statistics}">Статистика</a>
+            <a th:href="@{/about}">Об авторе</a>
+            <div class="auth-block">
+                <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Log out</a>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Log in</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Основная область, которую дочерние страницы будут заменять -->
+<main layout:fragment="content">
+    <!-- Если дочерняя страница не переопределит, покажем что-нибудь по умолчанию -->
+    <p>Не задано</p>
+</main>
+
+<!-- Нижняя часть -->
+<footer layout:fragment="footer">
+</footer>
+
+
+</body>
+</html>

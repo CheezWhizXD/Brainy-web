@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate="~{layout}">
+<head>
+    <title layout:fragment="title">Brainy - Добавление курса</title>
+</head>
+
+<body>
+<section layout:fragment="content" class="form-content">
+    <h2>Добавление курса</h2>
+    <form th:action="@{/courses/add}" th:object="${course}" method="post">
+        <div class="form-group">
+            <label>Название:</label>
+            <input type="text" th:field="*{title}" required/>
+        </div>
+
+        <div class="form-group">
+            <label>Преподаватель:</label>
+            <input type="text" th:field="*{teacher}" required/>
+        </div>
+
+        <div class="form-group">
+            <label>Количество уроков:</label>
+            <input type="number" th:field="*{lessonsCount}" required/>
+        </div>
+
+        <div class="form-group">
+            <label>Цена:</label>
+            <input type="number" step="0.01" th:field="*{price}" required/>
+        </div>
+
+        <div class="form-group">
+            <label>Направление:</label>
+            <input type="text" th:field="*{direction}" required/>
+        </div>
+
+        <button type="submit">Сохранить</button>
+    </form>
+</section>
+</body>
+</html>

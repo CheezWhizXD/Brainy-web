@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate="~{layout}">
+<head>
+    <title layout:fragment="title">Brainy - Главная</title>
+</head>
+
+<body>
+<section layout:fragment="content" class="home-content">
+    <div class="home-text-block">
+        <h1>Где мечты становятся навыками</h1>
+        <p>Ваш персональный гид в образовании — выбирайте из сотен курсов, учитесь в удобном для вас темпе и получайте навыки, востребованные на рынке.</p>
+        <button onclick="location.href='/courses'">перейти к курсам</button>
+    </div>
+    <div class="home-image-block">
+        <img th:src="@{/images/homepage.png}" alt="Иллюстрация" class="main-illustration"/>
+    </div>
+</section>
+</body>
+</html>

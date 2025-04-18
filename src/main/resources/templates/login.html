@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate="~{layout}">
+<head>
+    <title layout:fragment="title">Brainy - Вход</title>
+</head>
+
+<body>
+<section layout:fragment="content" class="login-content">
+    <h2>Вход в личный кабинет</h2>
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <label>Логин:</label>
+            <input type="text" name="username" required/>
+        </div>
+        <div class="form-group">
+            <label>Пароль:</label>
+            <input type="password" name="password" required/>
+        </div>
+        <button type="submit">Вход</button>
+    </form>
+</section>
+</body>
+</html>

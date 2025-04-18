@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate="~{layout}">
+<head>
+    <title layout:fragment="title">Brainy - Об авторе</title>
+</head>
+
+<body>
+<section layout:fragment="content" class="about-content">
+    <div>
+        <h2>Об авторе</h2>
+        <p>Ефимова Ульяна Вадимовна</p>
+        <p>Группа: ДПИ22-1</p>
+        <p><a href="https://github.com/CheezWhizXD" target="_blank">GitHub</a></p>
+    </div>
+
+    <div class="about-illustration">
+        <img th:src="@{/images/about.png}" alt="Об авторе"/>
+    </div>
+</section>
+</body>
+</html>

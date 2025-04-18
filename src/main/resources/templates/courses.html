@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.thymeleaf.org"
+  xmlns:layout="http://www.thymeleaf.org/layout"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+  layout:decorate="~{layout}"
+>
+  <head>
+    <title layout:fragment="title">Brainy - Все курсы</title>
+  </head>
+
+  <body>
+    <section layout:fragment="content" class="courses-content">
+      <h2>Все курсы</h2>
+      <div>
+        <form th:action="@{/courses/search}" method="get" class="search-form">
+          <input
+            type="text"
+            name="keyword"
+            placeholder="Какой курс вы ищете?"
+          />
+          <button type="submit">Поиск</button>
+        </form>
+
+        <button
+          sec:authorize="hasRole('ADMIN')"
+          onclick="location.href='/courses/add'"
+        >
+          Добавить курс
+        </button>
+      </div>
+
+      <div class="course-list">
+        <table>
+          <thead>
+            <tr>
+              <th>Название</th>
+              <th>Преподаватель</th>
+              <th>Количество уроков</th>
+              <th>Цена</th>
+              <th>Направление</th>
+              <th sec:authorize="hasRole('ADMIN')">Действие</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="c : ${courses}">
+              <td th:text="${c.title}">Title</td>
+              <td th:text="${c.teacher}">Teacher</td>
+              <td th:text="${c.lessonsCount}">0</td>
+              <td th:text="${c.price}">0</td>
+              <td th:text="${c.direction}">Direction</td>
+              <td sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{/courses/delete/{id}(id=${c.id})}">Удалить</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+</html>
