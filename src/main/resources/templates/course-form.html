@@ -4,13 +4,22 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
       layout:decorate="~{layout}">
 <head>
-    <title layout:fragment="title">Brainy - Добавление курса</title>
+    <!-- динамический заголовок -->
+    <title layout:fragment="title"
+          th:text="${isEdit} ? 'Brainy - Редактирование курса' : 'Brainy - Добавление курса'">
+        Brainy - Редактирование курса
+    </title>
 </head>
 
 <body>
 <section layout:fragment="content" class="form-content">
-    <h2>Добавление курса</h2>
-    <form th:action="@{/courses/add}" th:object="${course}" method="post">
+    <!-- динамический заголовок H2 -->
+    <h2 th:text="${isEdit} ? 'Редактирование курса' : 'Добавление курса'">Редактирование курса</h2>
+
+    <!-- динамический action -->
+    <form th:action="${isEdit} ? @{/courses/edit/{id}(id=${course.id})} : @{/courses/add}"
+          th:object="${course}" method="post">
+
         <div class="form-group">
             <label>Название:</label>
             <input type="text" th:field="*{title}" required/>
